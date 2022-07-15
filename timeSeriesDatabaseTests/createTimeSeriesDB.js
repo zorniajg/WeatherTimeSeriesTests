@@ -26,8 +26,14 @@ async function main() {
         }
 
         // Create sites with sample data generated
-        createSite("Vienna");
-        createSite("Arlington");
+        let vienna, arlington;
+
+        vienna = await createSite("Vienna");
+        arlington = await createSite("Arlington");
+
+        generateSamples(vienna._id);
+        generateSamples(arlington._id);
+
     }
     catch (err) {
         console.error(err);
@@ -55,7 +61,7 @@ async function createSite(siteName) {
 
     try {
         // Check if site already exists
-        const site = await Site.findOne({name: siteName});
+        let site = await Site.findOne({name: siteName});
 
         // If site does not exist, create it
         if(!site) {
@@ -63,10 +69,9 @@ async function createSite(siteName) {
                 name: siteName,
                 friendlyId: siteName
             });
-            await site.save();
+            site = await newSite.save();
         }
-        // Generate samples for site once it has been created
-        generateSamples(site._id);
+        return site;
     }
     catch(err) {
         console.log(err);
@@ -133,7 +138,7 @@ async function generateSamples(siteId) {
         endTime = performance.now();
         const timeTaken = endTime - startTime;
         const minutes = (timeTaken / 60000).toFixed(2);
-        console.log('Total time taken to create normal database: \nMinutes: ' + minutes);
+        console.log('Total time taken to create timeseries database: \nMinutes: ' + minutes);
     }
     catch(err) {
         console.log(err);

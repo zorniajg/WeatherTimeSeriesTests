@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var schema = new Schema( {
-
+    
     timeseries: {
         timeField: {
             type: Date,
@@ -52,5 +52,7 @@ var schema = new Schema( {
     weatherAge: {type: Number}
 
 });
+
+schema.index({metaField:1, timeField:1});
 
 module.exports = mongoose.model('Sample',schema);
