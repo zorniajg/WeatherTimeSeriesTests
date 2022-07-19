@@ -1,0 +1,23 @@
+{
+  "name": "timeseriesdatabasetests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zorniajg/WeatherTimeSeriesTests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zorniajg/WeatherTimeSeriesTests/issues"
+  },
+  "homepage": "https://github.com/zorniajg/WeatherTimeSeriesTests#readme",
+  "dependencies": {
+    "mongodb": "^4.8.0",
+    "mongoose": "^6.4.5"
+  }
+}
