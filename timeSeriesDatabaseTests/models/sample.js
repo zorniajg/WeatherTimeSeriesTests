@@ -3,6 +3,8 @@ const Schema = mongoose.Schema;
 
 var schema = new Schema( {
     
+    complete: {type: Boolean},
+    
     timeseries: {
         timeField: {
             type: Date,
@@ -17,8 +19,6 @@ var schema = new Schema( {
             required: true
         }
      },
-
-    complete: {type: Boolean},
 
     ep: [
         {

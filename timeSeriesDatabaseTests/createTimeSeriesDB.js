@@ -130,7 +130,7 @@ async function generateSamples(siteId) {
 
 
             // Write samples to database in batches of 100
-            if(i % 100 === 0) {
+            if(i % 100 === 0 || date === endDate) {
                 await Sample.insertMany(samples);
                 samples = [];
             }
