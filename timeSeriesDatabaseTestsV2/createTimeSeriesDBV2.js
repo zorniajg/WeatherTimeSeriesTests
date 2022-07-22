@@ -97,7 +97,7 @@ async function generateSamples(siteId) {
             console.log('Date = ' + date);
 
             // Traverse endpoints to generate random sample values
-            for(let endpoint = 0; endpoint < TOTAL_ENDPOINTS / TOTAL_SITES; endpoint++){
+            for(let endpoint = 0; endpoint < (TOTAL_ENDPOINTS / TOTAL_SITES); endpoint++){
 
                 let endpointInput = {
                     id: endpoints[endpoint]._id,
@@ -123,19 +123,16 @@ async function generateSamples(siteId) {
                         temperature: (Math.random() * (80 - 50) + 50).toFixed(2)
                     }
                 });
+
+                // Insert every 100 sample objects into sample array which will be written to the database
+                samples[endpoint] = sample;
             }
+
+            await Sample.insertMany(samples);
+            samples = [];
+
             // Increment date by 15 minutes
-            date = new Date(date.getTime() + (INTERVAL_IN_MINUTES * 60000));
-
-            // Insert every 100 sample objects into sample array which will be written to the database
-            samples[i % 100] = sample;
-
-
-            // Write samples to database in batches of 100
-            if(i % 100 === 0 || date === endDate) {
-                await Sample.insertMany(samples);
-                samples = [];
-            }
+            date = new Date(date.getTime() + (INTERVAL_IN_MINUTES * 60000));      
         }
         endTime = performance.now();
         const timeTaken = endTime - startTime;
