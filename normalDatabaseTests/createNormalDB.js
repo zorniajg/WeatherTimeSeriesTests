@@ -104,7 +104,7 @@ async function generateSamples(siteId) {
             // Create timeseries sample object with timeseries fields, enpoint data, and temperature reading
             const sample = new Sample({
                 site: siteId,
-                date: date,
+                timestamp: date,
 
                 ep: endpointInputs,
                 weather: {

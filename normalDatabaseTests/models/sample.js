@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 var schema = new Schema( {
 
     site: {type: Schema.Types.ObjectID, ref: 'Site'},
-    date: {type: Date},
+    timestamp: {type: Date},
     complete: {type: Boolean},
 
     ep: [

@@ -3,22 +3,9 @@ const Schema = mongoose.Schema;
 
 var schema = new Schema( {
     
+    site: {type: Schema.Types.ObjectID, ref: 'Site'},
+    timestamp: {type: Date},
     complete: {type: Boolean},
-    
-    timeseries: {
-        timeField: {
-            type: Date,
-            required: true
-        },
-        metaField: {
-            type: Schema.Types.ObjectId, ref: 'Site',
-            required: true
-        },
-        granularity: {
-            type: String,
-            required: true
-        }
-     },
 
     ep: [
         {
@@ -51,6 +38,13 @@ var schema = new Schema( {
 
     weatherAge: {type: Number}
 
+},
+{
+    timeseries: {
+        timeField: 'timestamp',
+        metaField: 'site',
+        granularity: 'minutes'
+    }  
 });
 
 schema.index({metaField:1, timeField:1});
