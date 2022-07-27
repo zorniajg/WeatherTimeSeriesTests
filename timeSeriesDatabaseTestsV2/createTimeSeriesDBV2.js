@@ -15,7 +15,7 @@ let endTime;
 async function main() {
     try {
         // Connect to the MongoDB cluster
-        await mongoose.connect("mongodb+srv://zorniajg:timeToTime321@cluster0.xf4y8.mongodb.net/timeseriesV2?retryWrites=true&w=majority");
+        await mongoose.connect("mongodb+srv://zorniajg:timeSeriesDatabaseTests123@cluster0.xf4y8.mongodb.net/timeseriesV2?retryWrites=true&w=majority");
 
         startTime = performance.now();
         console.log('Starting to create timeseries database');

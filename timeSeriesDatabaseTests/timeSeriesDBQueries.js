@@ -9,7 +9,7 @@ let startTime, endTime;
 async function main() {
     try {
         // Connect to the MongoDB cluster
-        await mongoose.connect("mongodb+srv://zorniajg:timeToTime321@cluster0.xf4y8.mongodb.net/timeseries?retryWrites=true&w=majority");
+        await mongoose.connect("mongodb+srv://zorniajg:timeSeriesDatabaseTests123@cluster0.xf4y8.mongodb.net/timeseries?retryWrites=true&w=majority");
 
         let vienna = await Site.find({name: 'Vienna'});
         console.log('VIENNA = ' + vienna[0].name);

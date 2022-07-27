@@ -9,7 +9,6 @@ var schema = new Schema( {
 
     ep: 
         {
-            _id:false,
             value: {type: Number },
             min: {type: Number },
             max: {type: Number },
@@ -45,6 +44,6 @@ var schema = new Schema( {
     }  
 });
 
-schema.index({metaField:1, timeField:1});
+schema.index({timestamp:1, ep:1});
 
 module.exports = mongoose.model('Sample',schema);

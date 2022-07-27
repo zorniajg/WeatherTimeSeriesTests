@@ -15,7 +15,7 @@ let endTime;
 async function main() {
     try {
         // Connect to the MongoDB cluster
-        await mongoose.connect("mongodb+srv://zorniajg:timeToTime321@cluster0.xf4y8.mongodb.net/normal?retryWrites=true&w=majority");
+        await mongoose.connect("mongodb+srv://zorniajg:timeSeriesDatabaseTests123@cluster0.xf4y8.mongodb.net/normal?retryWrites=true&w=majority");
 
         startTime = performance.now();
         console.log('Starting to create normal database');
@@ -51,11 +51,9 @@ async function createEndpoints() {
 };
 
 async function createSite(siteName) {
-    let newSite;
-
     try {
         // Check if site already exists
-        const site = await Site.findOne({name: siteName});
+        let site = await Site.findOne({name: siteName});
 
         // If site does not exist, create it
         if(!site) {
